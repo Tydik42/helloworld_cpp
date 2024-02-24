@@ -12,7 +12,6 @@ configure_file(version.h.in lib.h)
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
 add_executable(test_version test_version.cpp)
-add_executable(test_version_gtest test_version_gtest.cpp)
 
 set_target_properties(helloworld_cli helloworld test_version PROPERTIES
         CXX_STANDARD 14
