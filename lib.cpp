@@ -1,6 +1,6 @@
 #include "lib.h"
 
-#include "version"
+#include "version.h.in"
 
 int version()
 {
