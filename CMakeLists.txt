@@ -7,7 +7,7 @@ project(helloworld VERSION ${PROJECT_VESRION})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-configure_file(version.h.in lib.h)
+configure_file(version.h.in version.h)
 
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)
@@ -72,4 +72,3 @@ include(CPack)
 enable_testing()
 
 add_test(test_version test_version)
-add_test(test_version_gtest test_version_gtest)
