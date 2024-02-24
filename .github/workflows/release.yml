@@ -3,25 +3,21 @@ name: 'C++ CI'
 on:
   push:
     branches:
-      - main
+      - master
       - feature/github_actions
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Project checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           submodules: true
-      - name: Boost install
-        run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-      - name: Project build
-        run: |
-          cmake . -DPATCH_VERSION=${{ github.run_number }}
-          cmake --build .
-          cmake --build . --target test
-          cmake --build . --target package
+      - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
+      - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
+      - run: cmake --build .
+      - run: cmake --build . --target test
+      - run: cmake --build . --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
